@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>B. Yuvaraj — Portfolio</title>
+  <meta name="description" content="Portfolio website for B. Yuvaraj — aspiring Data Scientist & Full-Stack Developer." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0f16;
+      --panel: #121826;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --brand: #3b82f6;
+      --brand-2: #06b6d4;
+      --ring: rgba(59,130,246,.45);
+      --card: #0f172a;
+      --border: #1f2937;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";background:var(--bg);color:var(--text);line-height:1.6}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    /* Nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(11,15,22,.7);backdrop-filter:saturate(150%) blur(14px);border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.2px}
+    .brand-badge{display:grid;place-items:center;width:32px;height:32px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));font-weight:800}
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav a{opacity:.9}
+    .nav a:hover{opacity:1;color:var(--brand)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,#121826,#0f1625);color:var(--text);box-shadow:0 0 0 0 var(--ring);transition:box-shadow .2s ease, transform .15s ease}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 0 0 6px var(--ring)}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));border:0;color:white}
+    /* Sections */
+    section{padding:72px 0;border-bottom:1px solid var(--border)}
+    .section-title{font-size:28px;line-height:1.2;margin:0 0 16px;font-weight:800}
+    .section-sub{color:var(--muted);margin:0 0 28px}
+    /* Hero */
+    .hero{padding:96px 0 72px;background:
+      radial-gradient(1000px 500px at 20% -10%, rgba(59,130,246,.18), transparent 60%),
+      radial-gradient(1000px 500px at 80% -10%, rgba(6,182,212,.12), transparent 60%);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+    .title{font-size:42px;line-height:1.15;margin:0 0 14px;font-weight:800}
+    .title span{background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:#cbd5e1;margin:0 0 24px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:14px}
+    .chip b{color:var(--text)}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+    .avatar{width:220px;height:220px;border-radius:24px;overflow:hidden;border:1px solid var(--border);box-shadow:0 10px 35px rgba(2,6,23,.35)}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+    /* About */
+    .about{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px}
+    .list{padding:0;margin:0;list-style:none;display:grid;gap:12px}
+    .list li{display:flex;gap:12px;align-items:flex-start}
+    .pill{font-size:13px;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--panel);color:#cbd5e1}
+    /* Skills */
+    .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .skill{padding:18px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(180deg,#0e1422,#0b111d)}
+    .skill h4{margin:0 0 8px}
+    .meter{height:10px;border-radius:999px;background:#0b1220;border:1px solid var(--border);overflow:hidden}
+    .meter > span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2));width:70%}
+    /* Certificates */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .certificate{position:relative;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#0e1422,#0b111d);text-align:center;padding:20px}
+    .certificate img{width:100%;border-radius:12px}
+    .certificate h4{margin-top:12px}
+    /* Contact */
+    .contact-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+    form{display:grid;gap:12px}
+    input, textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:#0a1220;color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+    .footer{padding:28px 0;color:var(--muted)}
+    /* Badges */
+    .badges{display:flex;flex-wrap:wrap;gap:10px}
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid, .about, .contact-wrap{grid-template-columns:1fr}
+      .skills{grid-template-columns:repeat(2,1fr)}
+      .grid{grid-template-columns:1fr 1fr}
+      .avatar{margin-inline:auto}
+      .hero{padding-top:72px}
+    }
+    @media (max-width: 640px){
+      .skills{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      .title{font-size:34px}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="B. Yuvaraj home">
+        <span class="brand-badge">BY</span>
+        <span>B. Yuvaraj</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="yuvaraj_cv.pdf" download aria-label="Download Resume">Download CV</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="chip">Currently <b>2nd year BCA</b> · Agurchand Manmull Jain College (Madras University)</div>
+        <h1 class="title">Hi, I’m <span>B. Yuvaraj</span> — aspiring <span>Data Scientist</span> & Full-Stack Developer.</h1>
+        <p class="lead">I love reading books and exploring new technologies. I’m building skills in data science, UI/UX design, and full-stack development.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#certificates">View Certificates</a>
+          <a class="btn" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <div class="avatar">
+        <img src="C:\Users\Success\Downloads\WhatsApp Image 2025-09-04 at 2.09.03 AM.jpeg" alt="Profile"/>
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container about">
+      <div class="card">
+        <h2 class="section-title">About</h2>
+        <p>Hello! I’m Yuvaraj, currently pursuing my BCA at Agurchand Manmull Jain College under Madras University. I enjoy reading, learning, and creating. My focus areas are data science, UI/UX, and full-stack development.</p>
+        <div class="badges">
+          <span class="pill">Data Science</span>
+          <span class="pill">UI/UX Design</span>
+          <span class="pill">Full-Stack Dev</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 12px">Education</h3>
+        <ul class="list">
+          <li>
+            <div>
+              <strong>BCA — Agurchand Manmull Jain College</strong><br/>
+              <span class="muted">Under Madras University · <em>Expected Graduation: 2027</em></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-sub">A snapshot of my current capabilities. These can grow as I learn more.</p>
+      <div class="skills">
+        <div class="skill">
+          <h4>Data Science</h4>
+          <p class="section-sub">Python, data wrangling, basic ML, visualization.</p>
+          <div class="meter"><span style="width:70%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>UI/UX Design</h4>
+          <p class="section-sub">Wireframing, prototyping, usability basics.</p>
+          <div class="meter"><span style="width:65%"></span></div>
+        </div>
+        <div class="skill">
+          <h4>Full-Stack</h4>
+          <p class="section-sub">Frontend foundations, basic backend & APIs.</p>
+          <div class="meter"><span style="width:60%"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <div class="container">
+      <h2 class="section-title">Certificates</h2>
+      <p class="section-sub">Here are some of my certifications and achievements.</p>
+      <div class="grid">
+        <div class="certificate">
+          <img src="C:\Users\Success\Downloads\WhatsApp Image 2025-09-09 at 3.35.41 AM (1).jpeg" alt="Certificate 1">
+          <h4>Python Certification</h4>
+        </div>
+        <div class="certificate">
+          <img src="C:\Users\Success\Downloads\WhatsApp Image 2025-09-09 at 3.35.42 AM (1).jpeg" alt="Certificate 2">
+          <h4>Data Visualization</h4>
+          <p class="section-sub">Learned visualization with Matplotlib & Tableau.</p>
+        </div>
+        <div class="certificate">
+          <img src="C:\Users\Success\Downloads\WhatsApp Image 2025-09-09 at 3.35.41 AM.jpeg" alt="Certificate 3">
+          <h4>Web Development</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container contact-wrap">
+      <div>
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-sub">Feel free to reach out for collaborations or opportunities.</p>
+        <div class="card">
+          <ul class="list">
+            <li>
+              <div>
+                <strong>Email</strong><br/>
+                <a href="mailto:24h134@amjaincollege.edu.in">24h134@amjaincollege.edu.in</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Phone</strong><br/>
+                <a href="tel:+919894781719">9894781719</a>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>LinkedIn</strong><br/>
+                <a href=https://www.linkedin.com/in/yuvaraj-b-a0139b383 target="_blank">linkedin.com/in/yuvaraj-profile</a>
+              </div>
+            </li>
+            
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px">Contact Form</h3>
+        <form onsubmit="event.preventDefault(); alert('Thanks! Your message has been captured (demo).'); this.reset();">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" placeholder="Your name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" placeholder="Write your message..." required></textarea>
+          </label>
+          <button class="btn btn-primary" type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <span>© <span id="year"></span> B. Yuvaraj</span>
+      <div style="display:flex;gap:10px">
+        <a class="pill" href="#home">Back to top</a>
+        <a class="pill" href="https://github.com/yuvaraj-username" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
